@@ -57,13 +57,6 @@ namespace Day23_CollectionAddressBook
         {
             return FirstName + " " + LastName;
         }
-        public override bool Equals(object obj)
-        {
-            if (!(obj.GetType() is Contact))
-                return false;
-            else if (GetName() == ((Contact)obj).GetName())
-                return true;
-            return false;
-        }
+        
     }
 }
