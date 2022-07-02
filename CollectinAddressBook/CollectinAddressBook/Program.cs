@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Day23_CollectionAddressBook
 {
-    internal class Program
+    internal class Start
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("===================Welcome To Address Book===================");
             //Object Of Class
             AddressBook address = new AddressBook();
 
@@ -18,7 +17,7 @@ namespace Day23_CollectionAddressBook
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("\nEnter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Edit contact \n4. Exit");
+                Console.WriteLine("\nEnter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Edit contact \n4. Delete Contact \n5. Exit");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -42,6 +41,13 @@ namespace Day23_CollectionAddressBook
                         break;
 
                     case 4:
+                        Console.WriteLine("Deleting Existing Contact");
+                        address.DeleteContact();
+                        Console.WriteLine();
+                        break;
+
+
+                    case 5:
                         Console.WriteLine("If You Want To Exit Then Press Enter");
                         flag = false;
                         Console.ReadKey();
@@ -52,7 +58,7 @@ namespace Day23_CollectionAddressBook
                         break;
                 }
             }
-            Console.WriteLine();
+
         }
     }
 }

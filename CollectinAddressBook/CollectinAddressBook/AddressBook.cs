@@ -74,6 +74,19 @@ namespace Day23_CollectionAddressBook
             else
                 Console.WriteLine("Name does not exist");
         }
+        //Method Used To Delete Contact
+        public void DeleteContact()
+        {
+            Console.WriteLine("Enter name of contact to delete: ");
+            string name = Console.ReadLine();
+            if (contacts.ContainsKey(name) is true)
+            {
+                contacts.Remove(name);
+                Console.WriteLine("Successfully Deleted!!!");
+            }
+            else
+                Console.WriteLine("Name does not exist");
+        }
 
 
         //Method Used To Display The Contacts
