@@ -1,10 +1,20 @@
-﻿namespace CoolectionAddressBook
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Day23_CollectionAddressBook
 {
-   class Program
+    internal class Program
     {
-        public static void Main(string[]args)
+        static void Main(string[] args)
         {
-            Console.WriteLine("welcome to addressBook");
+            Console.WriteLine("===================Welcome To Address Book===================");
+            AddressBook address = new AddressBook();
+            address.CreateContact();
+            address.Display();
+            Console.ReadKey();
         }
     }
 }
