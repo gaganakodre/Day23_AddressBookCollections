@@ -6,121 +6,87 @@ using System.Threading.Tasks;
 
 namespace Day23_CollectionAddressBook
 {
-    internal class AddressBook
+    internal class Start
     {
-        //Creating Object Of Class
-        Contact tempContact = new Contact();
-        //Creating Dictionary
-        public Dictionary<string, Contact> contacts;
-
-        //Initializing Dictionary
-        public AddressBook()
+        static void Main(string[] args)
         {
-            contacts = new Dictionary<string, Contact>();
-        }
+            //Object Of Class
+            AdressBookSystem adressBookSystem = new AdressBookSystem();
 
-        //Method Used To Create Contacts
-        public void CreateContact()
-        {
-            tempContact.GetUserInfo();
-            string name = tempContact.GetName();
-            if (contacts.ContainsKey(name) is false)
+            bool flag = true;
+            while (flag)
             {
-                contacts.Add(name, tempContact);
-            }
-            else
-            {
-                Console.WriteLine("erorr");
-            }
-        }
-
-        //Method Used To Add Contacts
-        public void AddContacts()
-        {
-            tempContact.GetUserInfo();
-            string name = tempContact.GetName();
-            if (contacts.ContainsKey(name) is false)
-            {
-                contacts.Add(name, tempContact);
-                Console.WriteLine("Successfully Added A New Contact!!!");
-            }
-            else
-            {
-                Console.WriteLine("erorr");
-            }
-
-        }
-
-        //Method Used To Edit Contacts
-        public void EditContact()
-        {
-            Console.WriteLine("Enter name of contact to edit: ");
-            string name = Console.ReadLine();
-            if (contacts.ContainsKey(name) is true)
-            {
-                Contact tempContact = new Contact();
-                tempContact.GetUserInfo();
-                string editName = tempContact.GetName();
-                if (contacts.ContainsKey(editName) is false || editName == name)
+                Console.WriteLine("enter the option: 1.Add AdressBook 2.Edit AddressBook 3.Remove AddressBook");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
                 {
-                    contacts.Remove(name);
-                    contacts.Add(editName, tempContact);
-                    Console.WriteLine("Successfully Edited And Saved!!!");
-                    Display();
+                    case 1:
+                        adressBookSystem.AddAddressBook();
+                        break;
+                    case 2:
+                        Console.WriteLine("enter the addressbook name you want to edit");
+                        string addressBookName = Console.ReadLine();
+                        if (adressBookSystem.adressBooks.ContainsKey(addressBookName.ToLower()))
+                        {
+                            bool flag1 = true;
+                            while (flag1)
+                            {
+
+                                Console.WriteLine("\nEnter Number to Execute the Address book Program \n1. Create contacts \n2. Add contact \n3. Edit contact \n4. Delete Contact \n5. Add Multiple Person \n6. Exit");
+                                int option1 = Convert.ToInt32(Console.ReadLine());
+                                switch (option1)
+                                {
+                                    case 1:
+                                        Console.WriteLine("Creating A New Contact");
+                                        adressBookSystem.adressBooks[addressBookName.ToLower()].CreateContact();
+                                        adressBookSystem.adressBooks[addressBookName.ToLower()].Display();
+                                        Console.WriteLine();
+                                        break;
+
+                                    case 2:
+                                        Console.WriteLine("Adding A New Contact");
+                                        adressBookSystem.adressBooks[addressBookName.ToLower()].AddContacts();
+                                        adressBookSystem.adressBooks[addressBookName.ToLower()].Display();
+                                        Console.WriteLine();
+                                        break;
+
+                                    case 3:
+                                        Console.WriteLine("Editing Existing Contact");
+                                        adressBookSystem.adressBooks[addressBookName.ToLower()].EditContact();
+                                        Console.WriteLine();
+                                        break;
+
+                                    case 4:
+                                        Console.WriteLine("Deleting Existing Contact");
+                                        adressBookSystem.adressBooks[addressBookName.ToLower()].DeleteContact();
+                                        Console.WriteLine();
+                                        break;
+                                    case 5:
+                                        Console.WriteLine("Adding Multiple Contacts");
+                                        adressBookSystem.adressBooks[addressBookName.ToLower()].AddMultiple();
+                                        Console.WriteLine();
+                                        break;
+                                    case 6:
+                                        Console.WriteLine("If You Want To Exit Then Press Enter");
+                                        flag = false;
+                                        Console.ReadKey();
+                                        break;
+
+                                    default:
+                                        Console.WriteLine("Invalid");
+                                        break;
+
+                                }
+                            }
+
+                        }
+                        break;
+
+                    default:
+                        Console.WriteLine("Invaild");
+                        break;
                 }
-                else
-                    Console.WriteLine("Edited name is invalid");
             }
-            else
-                Console.WriteLine("Name does not exist");
-        }
-
-        //Method Used To Delete Contact
-        public void DeleteContact()
-        {
-            Console.WriteLine("Enter name of contact to delete: ");
-            string name = Console.ReadLine();
-            if (contacts.ContainsKey(name) is true)
-            {
-                contacts.Remove(name);
-                Console.WriteLine("Successfully Deleted!!!");
-            }
-            else
-                Console.WriteLine("Name does not exist");
-        }
-        public void AddMultiple()
-        {
-            Console.WriteLine("Enter no of contacts to add");
-            int count = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i < count; i++)
-            {
-                CreateContact();
-            }
-            Display();
-            Console.WriteLine("Successfully Added New Contacts");
-        }
-
-
-        //Method Used To Display The Contacts
-        //Display
-        public void Display()
-        {
-            foreach (string name in contacts.Keys)
-            {
-                contacts[name].Display();
-            }
-        }
-    }
-    internal class AdressBookSystem
-    {
-        public Dictionary<string, AddressBook> adressBooks = new Dictionary<string, AddressBook>();
-        public void AddAddressBook()
-        {
-            AddressBook adressBook = new AddressBook();
-            adressBook.AddMultiple();
-            Console.WriteLine("enter the addressbook name");
-            string addressName = Convert.ToString(Console.ReadLine());
-            adressBooks.Add(addressName.ToLower(), adressBook);
 
         }
     }
