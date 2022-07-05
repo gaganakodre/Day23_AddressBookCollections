@@ -165,18 +165,43 @@ namespace CompleteAddressBook
 				Console.WriteLine($"Contect not Found From {0}", countPlace);
 			}
 		}
-		public void SortAlphabetically()
+		public void SortAlphabetically(int choice1)
 		{
-			List<string> sortedList = new List<string>();
-			foreach (ContactPerson getContacts in userList)
+			Console.WriteLine("----------------------------------------------------------------------");
+			Console.WriteLine("FirstName   LastName   Address,  City,  State,  Zip,   Contact,  Email");
+			Console.WriteLine("----------------------------------------------------------------------");
+			switch (choice1)
 			{
-				string sortByFirstName = getContacts.firstName.ToString();
-				sortedList.Add(sortByFirstName);
-			}
-			sortedList.Sort();
-			foreach (string sortedContact in sortedList)
-			{
-				Console.WriteLine(sortedContact);
+				case 1:
+					userList.Sort(new Comparison<ContactPerson>((x, y) => string.Compare(x.firstName, y.firstName)));
+					foreach (ContactPerson contact in userList)
+					{
+						contact.print();
+					}
+					break;
+
+				case 2:
+					userList.Sort(new Comparison<ContactPerson>((x, y) => string.Compare(x.city, y.city)));
+					foreach (ContactPerson contact in userList)
+					{
+						contact.print();
+					}
+					break;
+
+				case 3:
+					userList.Sort(new Comparison<ContactPerson>((x, y) => string.Compare(x.state, y.state)));
+					foreach (ContactPerson contact in userList)
+					{
+						contact.print();
+					}
+					break;
+				case 4:
+					userList.Sort(new Comparison<ContactPerson>((x, y) => string.Compare(x.zip, y.zip)));
+					foreach (ContactPerson contact in userList)
+					{
+						contact.print();
+					}
+					break;
 			}
 		}
 	}

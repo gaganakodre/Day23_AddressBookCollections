@@ -203,8 +203,27 @@ namespace CompleteAddressBook
 						break;
 					case 7:
 
+						Console.WriteLine("Chooose option TO Sort Contacts by \n1. FirstName \n2. City \n3. State \n4. zip");
+						int option = Convert.ToInt32(Console.ReadLine());
 						Console.WriteLine("Alphabetically_Sorted_List");
-						addressBookDict[bookname].SortAlphabetically();
+						switch (option)
+						{
+							case 1:
+								addressBookDict[bookname].SortAlphabetically(1);
+								break;
+							case 2:
+								addressBookDict[bookname].SortAlphabetically(2);
+								break;
+							case 3:
+								addressBookDict[bookname].SortAlphabetically(3);
+								break;
+							case 4:
+								addressBookDict[bookname].SortAlphabetically(4);
+								break;
+							default:
+								Console.WriteLine("Invalid option....");
+								break;
+						}
 						break;
 					case 8:
 						flag = false;
