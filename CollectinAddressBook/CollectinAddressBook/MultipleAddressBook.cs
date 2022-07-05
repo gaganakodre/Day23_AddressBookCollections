@@ -213,5 +213,14 @@ namespace CompleteAddressBook
 		{
 			FileWriter.readFile();
 		}
+		public void writeInCsvFile()
+		{
+			FileWriter.csvFileWriter(userList);
+		}
+
+		public void readFromCsvFile()
+		{
+			FileWriter.readFromCSVFile();
+		}
 	}
 }
