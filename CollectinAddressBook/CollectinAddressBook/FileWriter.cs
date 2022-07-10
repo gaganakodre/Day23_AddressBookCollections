@@ -8,7 +8,7 @@ namespace CompleteAddressBook
     class FileWriter
     {
         public static string path = @"G:\FellowShip517\Dya23_CollectionAddressBook\Day23_AddressBookCollections\CollectinAddressBook\AddressBookFile.txt";
-        public static string csvPath = @"G:\FellowShip517\Dya23_CollectionAddressBook\Day23_AddressBookCollections\CollectinAddressBook\CSV_AddressBook.csv";
+        public static string csvPath = @"G:\visualstudio\FileIOTextFile\CSVFileForAddressBook.csv";
         public static void WriteUsingStreamWriter(List<ContactPerson> data)
         {
 

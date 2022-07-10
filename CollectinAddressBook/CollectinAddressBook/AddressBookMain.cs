@@ -31,13 +31,13 @@ namespace CompleteAddressBook
 						}
 						MultipleAddressBook admain = new MultipleAddressBook();
 						addressBookDict.Add(book, admain);
-						Console.Clear();
+						Console.Clear();//cleares the screen, Clear method is called, the cursor automatically scrolls to the top-left corner of the window.
 						Console.WriteLine("AddressBook_Created successfully...");
 						break;
 					case 2:
 						Console.WriteLine($"You have {size} AddressBook.");
 
-						foreach (var address in addressBookDict.Keys)
+						foreach (var address in addressBookDict.Keys)//here assign it checkes key 
 						{
 							Console.WriteLine(address);
 						}
@@ -47,7 +47,7 @@ namespace CompleteAddressBook
 						foreach (var address in addressBookDict)
 						{
 							ch++;
-							if (addressBookDict.ContainsKey(bookname))
+							if (addressBookDict.ContainsKey(bookname))//check that bookname oresent or not
 							{
 								Console.Clear();
 								Console.WriteLine("Opened Address_Book :-->" + bookname);
@@ -219,9 +219,9 @@ namespace CompleteAddressBook
 						addressBookDict[bookname].Display();
 						break;
 					case 3:
-						Console.Write("Enter FirstName U want to Delet : ");
+						Console.Write("Enter FirstName U want to Delete : ");
 						string deletName = Console.ReadLine();
-						addressBookDict[bookname].DeletContact(deletName);
+						addressBookDict[bookname].DeletContact(deletName);//got ot delete contact method book name is the srting in mainmenu method
 						break;
 					case 4:
 						Console.WriteLine("Enter FirstName U want To Update");
@@ -253,7 +253,7 @@ namespace CompleteAddressBook
 						switch (option)
 						{
 							case 1:
-								addressBookDict[bookname].SortAlphabetically(1);
+								addressBookDict[bookname].SortAlphabetically(1);//passing the choice as 1 2 3 asking want to sort with city state name etc
 								break;
 							case 2:
 								addressBookDict[bookname].SortAlphabetically(2);

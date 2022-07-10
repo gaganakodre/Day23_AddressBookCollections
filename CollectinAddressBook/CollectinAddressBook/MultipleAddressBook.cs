@@ -15,19 +15,20 @@ namespace CompleteAddressBook
 		public void AddContact(String firstName, String lastName, String address, String city, String state, String zip, String contact, String email)
 		{
 			bool duplicate = equals(firstName);
-			if (duplicate)
+			if (duplicate)//here we chcek for duplicate data if not it will add new details
 			{
 				Console.WriteLine($"Duplicate Contact not allowed '{0}' is already in address book", firstName);
 			}
 			else
 			{
 				ContactPerson user = new ContactPerson(firstName, lastName, address, city, state, zip, contact, email);
-				userList.Add(user);
+				userList.Add(user);//here we add user by going to the Contactperson class
 			}
 		}
 		public bool equals(string first_name)
 		{
-			if (userList.Any(e => e.firstName == first_name))
+			if (userList.Any(e => e.firstName == first_name))//if entred first name is equal to entred name 
+				//it is derived from the enumarable class enum is like contant strings group of constants
 				return true;
 			else
 				return false;
@@ -35,7 +36,7 @@ namespace CompleteAddressBook
 
 		public void Display()
 		{
-			if (userList.Count() > 0)
+			if (userList.Count() > 0)//it will check with the count also in the list
 			{
 				Console.WriteLine("----------------------------------------------------------------------");
 				Console.WriteLine("FirstName  LastName  Address,  City,  State,  Zip,   Contact,   Email");
@@ -88,16 +89,16 @@ namespace CompleteAddressBook
 			}
 		}
 
-		public void DeletContact(string Fname)
+		public void DeletContact(string Fname)//here we will delete contact by first name
 		{
 			int size = userList.Count;
 			int check = 0;
 			foreach (ContactPerson user in userList)
 			{
 				check++;
-				if (user.firstName.Equals(Fname))
+				if (user.firstName.Equals(Fname))//checking both entered and list name are equal
 				{
-					userList.Remove(user);
+					userList.Remove(user);//remove method we are removing it
 					Console.WriteLine("Contact Deleted Successfully...");
 
 					break;
@@ -112,23 +113,23 @@ namespace CompleteAddressBook
 		public void SerchContact(string place)
 		{
 			List<string> person = new List<string>();
-			bool exits = isPlaceExist(place);
+			bool exits = isPlaceExist(place);//checking with the placeexist method
 			if (exits)
 			{
 				Console.WriteLine("Contacts From Place: " + place);
-				foreach (ContactPerson user in userList.FindAll(x => x.address.Equals(place)).ToList())
+				foreach (ContactPerson user in userList.FindAll(x => x.address.Equals(place)).ToList())//findall returns all the lements tha t stisfies the condiiton
 				{
 					string name = user.firstName + " " + user.lastName;
-					person.Add(name);
+					person.Add(name);//added address 
 				}
 				foreach (ContactPerson user in userList.FindAll(x => x.state.Equals(place)).ToList())
 				{
 					string name = user.firstName + " " + user.lastName;
-					person.Add(name);
+					person.Add(name);//compare state ane retued the first name and last name 
 				}
 				foreach (string val in person)
 				{
-					Console.WriteLine(val);
+					Console.WriteLine(val);//here printing those in the person list
 				}
 			}
 			else
@@ -138,8 +139,8 @@ namespace CompleteAddressBook
 		}
 		public bool isPlaceExist(string place)
 		{
-			if (this.userList.Any(e => e.city == place) || this.userList.Any(e => e.state == place))
-				return true;
+			if (this.userList.Any(e => e.city == place) || this.userList.Any(e => e.state == place))//lambda expression
+				return true;//checking for the city and state
 			else
 				return false;
 		}
@@ -173,7 +174,7 @@ namespace CompleteAddressBook
 			switch (choice1)
 			{
 				case 1:
-					userList.Sort(new Comparison<ContactPerson>((x, y) => string.Compare(x.firstName, y.firstName)));
+					userList.Sort(new Comparison<ContactPerson>((x, y) => string.Compare(x.firstName, y.firstName)));//deletages compare the two object of same type
 					foreach (ContactPerson contact in userList)
 					{
 						contact.print();
